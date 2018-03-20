@@ -3,7 +3,7 @@
 Our team proudly presents a brand new video conference functionality,
 which includes:
 
-* centralized server-based conferencing (SFU)
+* centralized server-based conferencing (<a href="https://webrtcglossary.com/sfu/">SFU</a>)
 * up to 100 members (depends on bandwidth)
 * Endpoints
 * managing each Endpoint's media elements
@@ -14,6 +14,8 @@ many-to-many video conferences with the versatile management of media elements,
 streams etc. This article will help you to understand all features and advantages
 of the functionality: step by step, you'll learn how to work with Endpoints and
 MediaRenderers, and how to create server-based video conferences.
+
+**You need Web SDK 4.3.0 or later to use this functionality.**
 
 
 ## Step 1 – Layout
