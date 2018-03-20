@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voximplant WebSDK endpoint demo</title>
+</head>
+<body>
+<div class="container">
+  <main class="container__workbench workbench" id="js__workbench">
+  </main>
+  <aside class="container__aside aside">
+    <div class="aside__settings settings">
+      <div class="settings__login">
+        <form class="form js__login-form">
+          <div class="form__element form-element">
+            <label for="voxFullLogin" class="form-element__label">Full login</label>
+            <input type="text" name="login" id="voxFullLogin" placeholder="user@foo.example.voximplant.com"
+                   class="form-element__input">
+          </div>
+          <div class="form__element form-element">
+            <label for="voxPasswd" class="form-element__label">Password</label>
+            <input type="password" name="password" id="voxPasswd" class="form-element__input">
+          </div>
+          <div class="form__buttons">
+            <button type="submit">Connect&amp;Login</button>
+          </div>
+        </form>
+      </div>
+      <div class="settings__address">
+        <form class="form js__call-form">
+          <div class="form__element form-element">
+            <label for="addressInput" class="form-element__label">Address</label>
+            <input type="text" name="number" id="addressInput" class="form-element__input">
+          </div>
+          <div class="form__buttons">
+            <button type="submit">Call</button>
+          </div>
+        </form>
+        <form class="form js__call-disconnect">
+          <div class="form__buttons">
+            <button type="submit">Disconnect</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <textarea class="aside__logger logger js__logarea" disabled></textarea>
+  </aside>
+</div>
+<template id="js__endpoint-template">
+  <article class="workbench__endpoint endpoint js__endpoint">
+    <header class="endpoint__header js__endpoint-header">ID:12343523452345</header>
+    <div class="endpoint__media"></div>
+    <div class="endpoint__data data-list">
+      <dl class="data-list__item endpoint-data">
+        <dt class="endpoint-data__header">user name:</dt>
+        <dd class="endpoint-data__info js__endpoint-username">100</dd>
+      </dl>
+      <dl class="data-list__item endpoint-data">
+        <dt class="endpoint-data__header">display name:</dt>
+        <dd class="endpoint-data__info js__endpoint-displayname">Cool User Name</dd>
+      </dl>
+      <dl class="data-list__item endpoint-data">
+        <dt class="endpoint-data__header">place:</dt>
+        <dd class="endpoint-data__info js__endpoint-place">42</dd>
+      </dl>
+      <dl class="data-list__item endpoint-data">
+        <dt class="endpoint-data__header">sip URI:</dt>
+        <dd class="endpoint-data__info js__endpoint-sipuri">sip:100@foo.example.voximplant.com</dd>
+      </dl>
+    </div>
+  </article>
+</template>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+<link href="normalize.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<script type="text/javascript" src="//cdn.voximplant.com/edge/voximplant.min.js"></script>
+<script type="text/javascript" src="helper.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
