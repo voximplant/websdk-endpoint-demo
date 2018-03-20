@@ -20,18 +20,18 @@ MediaRenderers, and how to create server-based video conferences.
 
 First of all, let's grab a simple demo to demonstrate all further concepts
 and tricks. You can get the demo layout
-<a href="//github.com/voximplant/websdk-endpoint-demo">here</a>, see the <b>Step 1</b>.
+<a href="https://github.com/voximplant/websdk-endpoint-demo">here</a>, see the <b>Step 1</b>.
 
-Note that in this demo we use <a href="//developer.mozilla.org/en-US/docs/Web/HTML/Element/template">HTML templates</a> and <a href="//necolas.github.io/normalize.css/">normalize.css</a>
+Note that in this demo we use <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">HTML templates</a> and <a href="https://necolas.github.io/normalize.css/">normalize.css</a>
 (in addition to the main <i>style.css</i> file).
 
 ## Step 2 – Init and Login
 
 To use Web SDK, you have to:
  * create the
-<a href="//voximplant.com/docs/references/websdk/globals.html#getinstance">Voximplant class</a> instance;
- * then <a href="//voximplant.com/docs/references/websdk/classes/client.html#init">initialize it</a>; 
- * and <a href="//voximplant.com/docs/references/websdk/classes/client.html#connect">connect</a> to the Voximplant cloud.
+<a href="https://voximplant.com/docs/references/websdk/globals.html#getinstance">Voximplant class</a> instance;
+ * then <a href="https://voximplant.com/docs/references/websdk/classes/client.html#init">initialize it</a>; 
+ * and <a href="https://voximplant.com/docs/references/websdk/classes/client.html#connect">connect</a> to the Voximplant cloud.
  
 We are also going to use two JS files: <b>index.js</b> and <b>helper.js</b>.
 The <b>index.js</b> will contain necessary code related to described concepts; the code which
@@ -185,12 +185,12 @@ The first scenario will create <b>gateway sessions</b>: handle incoming calls an
 Name it <b>conf_call.js</b>.
 The second scenario serves the conference itself, name it <b>conf_local.js</b>.
 
-<img src="//voximplant.com/assets/images/2018/03/14/gateway-to-conference.png">
+<img src="https://voximplant.com/assets/images/2018/03/14/gateway-to-conference.png">
 
-Go to the <a href="//manage.voximplant.com/#scenarios">Scenarios tab</a>
+Go to the <a href="https://manage.voximplant.com/#scenarios">Scenarios tab</a>
 of the VoxImplant control panel and add the <b>conf_call</b> scenario with the following code.
 Pay attention to the
-<a href="//voximplant.com/docs/references/appengine/VoxEngine.html#VoxEngine_callConference">callConference</a> call:
+<a href="https://voximplant.com/docs/references/appengine/VoxEngine.html#VoxEngine_callConference">callConference</a> call:
 the argument "myconf" will be used further.
 
 ```javascript
@@ -206,7 +206,7 @@ VoxEngine.addEventListener(AppEvents.CallAlerting, function(e) {
  
 Then create the <b>conf_local</b> scenario with the following blocks of code.
 Firstly load the
-<a href="//voximplant.com/docs/references/appengine/Module_Conference.html">conference</a> module
+<a href="https://voximplant.com/docs/references/appengine/Module_Conference.html">conference</a> module
 and define variables for a conference and participants' counter:
 ```javascript
 require("conference");
@@ -269,15 +269,15 @@ e.call.addEventListener(CallEvents.Disconnected, function (event2) {
 
 To make scenarios work with each other,
 we have to create an application and two rules in it.
-Go to the <a href="//manage.voximplant.com/#applications">Applications tab</a>, click <b>Create application</b>,
+Go to the <a href="https://manage.voximplant.com/#applications">Applications tab</a>, click <b>Create application</b>,
 type the name of a new application (“conference-app”, for example) and then click <b>Create</b>.
 
-<img src="//voximplant.com/assets/images/2018/03/13/new-app.jpg" align="center"/>
+<img src="https://voximplant.com/assets/images/2018/03/13/new-app.jpg" align="center"/>
 
 Then add a new rule to your <b>conference-app</b> application; you can name it <b>Incoming call</b>.
 Use the <b>conf_call</b> JS scenario in the rule and leave the default call pattern ( .* ).
 
-<img src="//voximplant.com/assets/images/2018/03/13/confcallrule.jpg" align="center"/>
+<img src="https://voximplant.com/assets/images/2018/03/13/confcallrule.jpg" align="center"/>
 
 It's time to create another rule for this application; you can name it <b>Conference</b>.
 Use the <b>conf_local</b> JS scenario in this rule. Pay attention to the following details:
@@ -288,43 +288,43 @@ to connect incoming calls to the conference.
 
 * Select the <b>Video conference</b> checkbox to allow video streams in conferences.
 
-<img src="//voximplant.com/assets/images/2018/03/13/conf-local-rule.jpg" align="center"/>
+<img src="https://voximplant.com/assets/images/2018/03/13/conf-local-rule.jpg" align="center"/>
 
 That's it! We have prepared the Voximplant cloud to serve video conferences.
 
 ## Step 6 – Endpoint introduction
-<a href="//voximplant.com/docs/references/websdk/classes/endpoint.html">Endpoint</a> is
+<a href="https://voximplant.com/docs/references/websdk/classes/endpoint.html">Endpoint</a> is
 one of the new concepts in the latest release. It represents any remote media unit
 in a call. Endpoint can be:
 
 * another <a href="//voximplant.com/docs/references/appengine/Call.html">call</a>
 (e.g. which is joined to the conference)
-* <a href="//voximplant.com/docs/references/appengine/Module_Player.html">Player</a>
-* <a href="//voximplant.com/docs/references/appengine/Module_ASR.html">ASR</a>
-* <a href="//voximplant.com/docs/references/appengine/Module_Recorder.html">Recorder</a>
+* <a href="https://voximplant.com/docs/references/appengine/Module_Player.html">Player</a>
+* <a href="https://voximplant.com/docs/references/appengine/Module_ASR.html">ASR</a>
+* <a href="https://voximplant.com/docs/references/appengine/Module_Recorder.html">Recorder</a>
 
 Each call from Web SDK includes only Endpoints,
 which send audio/video stream to a call. That means there wouldn't be 
-<a href="//voximplant.com/docs/references/appengine/Module_ASR.html">ASR</a>'s
-and <a href="//voximplant.com/docs/references/appengine/Module_Recorder.html">Recorder</a>'s Endpoints
+<a href="https://voximplant.com/docs/references/appengine/Module_ASR.html">ASR</a>'s
+and <a href="https://voximplant.com/docs/references/appengine/Module_Recorder.html">Recorder</a>'s Endpoints
 in a call from Web SDK. 
 Voxengine conference in the cloud contains Endpoints for <b>all</b> participants:
 
-<img src="//voximplant.com/assets/images/2018/03/14/websdkendpoint_3.png">
+<img src="https://voximplant.com/assets/images/2018/03/14/websdkendpoint_3.png">
 
 Call from Web SDK also includes local audio/video and Endpoints with MediaRenderers:
 
-<img src="//voximplant.com/assets/images/2018/03/14/websdkendpoint-details-f.png">
+<img src="https://voximplant.com/assets/images/2018/03/14/websdkendpoint-details-f.png">
 
 There are
-<a href="//voximplant.com/docs/references/websdk/enums/endpointevents.html">events
+<a href="https://voximplant.com/docs/references/websdk/enums/endpointevents.html">events
 for Endpoints</a>, which allows tracking Endpoints' behavior.
 For example, we can catch the moment when another participant joined the conference
 and create the container for video rendering. Accordingly, we can delete this container
 when the participant left the conference.
 
 Add a handler for the
-<a href="//voximplant.com/docs/references/websdk/enums/callevents.html#endpointadded">EndpointAdded</a>
+<a href="https://voximplant.com/docs/references/websdk/enums/callevents.html#endpointadded">EndpointAdded</a>
 event to the <b>bindCallCallbacks</b> function:
 ```javascript
 currentCall.on(VoxImplant.CallEvents.EndpointAdded, onEndpointAdded);
@@ -362,10 +362,10 @@ when web client started to receive remote video stream. Accordingly, we can dele
 this container when remote video stream is stopped. 
 
 When remote video is started, we have access to the
-<a href="//voximplant.com/docs/references/websdk/classes/mediarenderer.html">MediaRenderer</a>
+<a href="https://voximplant.com/docs/references/websdk/classes/mediarenderer.html">MediaRenderer</a>
 instance. Let's use it for extended logging. Add the handlers for the
-<a href="//voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaadded">RemoteMediaAdded</a> and
-<a href="//voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaremoved">RemoteMediaRemoved</a>
+<a href="https://voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaadded">RemoteMediaAdded</a> and
+<a href="https://voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaremoved">RemoteMediaRemoved</a>
 events to the <b>onEndpointAdded</b> function:
 
 ```javascript
@@ -381,10 +381,10 @@ function onRemoteMediaRemoved(e) {
 ```
 
 When you subscribe to the
-<a href="//voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaadded">RemoteMediaAdded</a>
+<a href="https://voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaadded">RemoteMediaAdded</a>
 event, Web SDK will no longer render remote audio/video stream automatically,
 so you have to call the
-<a href="//voximplant.com/docs/references/websdk/classes/mediarenderer.html#render">MediaRenderer.render</a>
+<a href="https://voximplant.com/docs/references/websdk/classes/mediarenderer.html#render">MediaRenderer.render</a>
 method with optional container parameter. To do so, add the following lines to the <b>onRemoteMediaAdded</b>
 function.
  
