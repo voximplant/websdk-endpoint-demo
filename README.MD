@@ -27,6 +27,9 @@ and tricks. You can get the demo layout
 Note that in this demo we use <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">HTML templates</a> and <a href="https://necolas.github.io/normalize.css/">normalize.css</a>
 (in addition to the main <i>style.css</i> file).
 
+<b>We recommend using <a href="https://github.com/kzahel/web-server-chrome">Web Server for Chrome</a>
+as it makes development and debugging easier.</b>
+
 ## Step 2 – Init and Login
 
 To use Web SDK, you have to:
