@@ -110,7 +110,7 @@ function onEndpointAdded(e) {
   const container = document.getElementById('js__workbench');
   container.appendChild(node);
   //Remove the display element with this endpoint
-  e.endpoint.on(VoxImplant.EndpointEvents.EndPointRemoved, onEndpointRemoved);
+  e.endpoint.on(VoxImplant.EndpointEvents.Removed, onEndpointRemoved);
   e.endpoint.on(VoxImplant.EndpointEvents.RemoteMediaAdded, onRemoteMediaAdded);
   e.endpoint.on(VoxImplant.EndpointEvents.RemoteMediaRemoved, onRemoteMediaRemoved);
 }
