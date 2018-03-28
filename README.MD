@@ -403,8 +403,8 @@ function.
 const endpointNode = document.getElementById(e.endpoint.id);
   if(endpointNode){
     const container = endpointNode.querySelector('.endpoint__media');
-    container.appendChild(e.mediaRenderer.element);
     e.mediaRenderer.element.width="200";
     e.mediaRenderer.element.height="150";
+    e.mediaRenderer.render(container);
   }
 ```
