@@ -101,6 +101,9 @@ try {
     // logging in
     await sdk.login(formData.get('login'), formData.get('password'));
     logger.write('[WebSDk] Authorization completed');
+    // change form visibility
+    loginForm.style.display = 'none';
+    callForm.style.display = 'block';
   }catch (e) {
     logger.write('[WebSDk] Wrong login or password');
   }
@@ -162,6 +165,8 @@ function bindCallCallbacks(e){
   currentCall.on(VoxImplant.CallEvents.Connected,onCallConnected);
   currentCall.on(VoxImplant.CallEvents.Disconnected,onCallDisconnected);
   currentCall.on(VoxImplant.CallEvents.Failed,onCallFailed);
+  callForm.style.display = 'none';
+  callDisconnect.style.display = 'block';
 }
 
 function onCallConnected(e) {
@@ -232,7 +237,7 @@ VoxEngine.addEventListener(AppEvents.Started, function (event) {
     VoxEngine.terminate();
   });
   conf.addEventListener(ConferenceEvents.Started, function (event2) {
-    Logger.write(`Conference is started ID: ${e.conference.getId()}`);
+    Logger.write(`Conference is started ID: ${event2.conference.getId()}`);
   });
 });
 ```
@@ -240,7 +245,7 @@ VoxEngine.addEventListener(AppEvents.Started, function (event) {
 Create another handler for further incoming calls. The handler answers a call and connects it to the conference.
 It also increases participants' counter:
 ```javascript
-VoxEngine.addEventListener(AppEvents.CallAlerting, function (event) {
+VoxEngine.addEventListener(AppEvents.CallAlerting, function (e) {
   e.call.answer();
   partsCounter = partsCounter + 1;
   const endpoint = conf.add({
