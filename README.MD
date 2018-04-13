@@ -27,7 +27,7 @@ and tricks. You can get the demo layout
 Note that in this demo we use <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">HTML templates</a> and <a href="https://necolas.github.io/normalize.css/">normalize.css</a>
 (in addition to the main <i>style.css</i> file).
 
-<b>We recommend using <a href="https://github.com/kzahel/web-server-chrome" target="_blank">Web Server for Chrome</a>
+<b>We recommend using <a href="https://github.com/kzahel/web-server-chrome">Web Server for Chrome</a>
 as it makes development and debugging easier.</b> Install and open the app, click "Choose folder" and specify the folder
 with your project. After that you'll see the Web Server URL, that's it.
 
@@ -300,6 +300,16 @@ to connect incoming calls to the conference.
 * Select the <b>Video conference</b> checkbox to allow video streams in conferences.
 
 <img src="https://voximplant.com/assets/images/2018/03/13/conf-local-rule.jpg" align="center"/>
+
+Now it's necessary to buy a number for the conference. To do this, select **Phone numbers** and then click **Buy new phone number** in the drop-down list.
+
+<img src="https://voximplant.com/wp-content/uploads/2017/12/dropdown.png" align="center"/>
+
+The **Available numbers** page will be displayed. Click the **Real number** switch to change it to **Test number**. Then click **Buy** to buy a virtual phone number.
+
+Finally, go to the <a href="https://manage.voximplant.com/#mynumbers">My phone numbers tab</a>, locate your number and select the **conference-app** application with the **Incoming call** rule in the drop-down list next to your phone number. Select the corresponding checkbox to confirm the operation.
+
+<img src="https://voximplant.com/assets/images/2018/04/13/number-plus-app.jpg" align="center">
 
 That's it! We have prepared the Voximplant cloud to serve video conferences.
 
