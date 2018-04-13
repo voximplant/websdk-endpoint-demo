@@ -27,7 +27,7 @@ and tricks. You can get the demo layout
 Note that in this demo we use <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">HTML templates</a> and <a href="https://necolas.github.io/normalize.css/">normalize.css</a>
 (in addition to the main <i>style.css</i> file).
 
-<b>We recommend using <a href="https://github.com/kzahel/web-server-chrome">Web Server for Chrome</a>
+<b>We recommend using <a href="https://github.com/kzahel/web-server-chrome" target="_blank">Web Server for Chrome</a>
 as it makes development and debugging easier.</b> Install and open the app, click "Choose folder" and specify the folder
 with your project. After that you'll see the Web Server URL, that's it.
 
