@@ -301,6 +301,10 @@ to connect incoming calls to the conference.
 
 <img src="https://voximplant.com/assets/images/2018/03/13/conf-local-rule.jpg" align="center"/>
 
+To use the application, you need to create at least one user. Go to the <a href="https://manage.voximplant.com/#users">Users tab</a>, create a user named **user1**, set a password for it and choose the **conference-app** application. The **is active** checkbox should be selected.
+
+<img src="https://voximplant.com/assets/images/2018/04/13/new-user_2.jpg" align="center">
+
 Now it's necessary to buy a number for the conference. To do this, select **Phone numbers** and then click **Buy new phone number** in the drop-down list.
 
 <img src="https://voximplant.com/wp-content/uploads/2017/12/dropdown.png" align="center"/>
