@@ -301,19 +301,9 @@ to connect incoming calls to the conference.
 
 <img src="https://voximplant.com/assets/images/2018/03/13/conf-local-rule.jpg" align="center"/>
 
-To use the application, you need to create at least one user. Go to the <a href="https://manage.voximplant.com/#users">Users tab</a>, create a user named **user1**, set a password for it and choose the **conference-app** application. The **is active** checkbox should be selected.
+To use the application, you need to create at least one user. Go to the <a href="https://manage.voximplant.com/#users">Users tab</a>, create a user named **user1**, set a password for it and choose the **conference-app** application; the **is active** checkbox should be selected. Click **Save**.
 
 <img src="https://voximplant.com/assets/images/2018/04/13/new-user_2.jpg" align="center">
-
-Now it's necessary to buy a number for the conference. To do this, select **Phone numbers** and then click **Buy new phone number** in the drop-down list.
-
-<img src="https://voximplant.com/wp-content/uploads/2017/12/dropdown.png" align="center"/>
-
-The **Available numbers** page will be displayed. Click the **Real number** switch to change it to **Test number**. Then click **Buy** to buy a virtual phone number.
-
-Finally, go to the <a href="https://manage.voximplant.com/#mynumbers">My phone numbers tab</a>, locate your number and select the **conference-app** application with the **Incoming call** rule in the drop-down list next to your phone number. Select the corresponding checkbox to confirm the operation.
-
-<img src="https://voximplant.com/assets/images/2018/04/13/number-plus-app.jpg" align="center">
 
 That's it! We have prepared the Voximplant cloud to serve video conferences.
 
@@ -422,3 +412,10 @@ const endpointNode = document.getElementById(e.endpoint.id);
     e.mediaRenderer.render(container);
   }
 ```
+
+## How to use it
+
+1. Clone this repo to your local machine.
+1. Open the <a href="https://github.com/kzahel/web-server-chrome">Web Server for Chrome</a>, click **Choose folder** and specify the **Step 7** folder. Open the suggested **Web Server URL** in your browser.<br/><img src="https://voximplant.com/assets/images/2018/04/13/webchrome.jpg" width="45%"><br/>
+1. Type in the **Full login** in the right column. The Full login consists of a user name (**user1**) + **@** + application name (**conference-app**) + your Voximplant account name + **voximplant.com**. Then type in the password for the **user1** and click **Connect&Login**.<br/><img src="https://voximplant.com/assets/images/2018/04/13/connect-login.jpg"><br/> Allow access to your microphone and camera.
+1. Then specify **Conference name/number** as a **conference** and click **Call**.<br/> Nice, now you are the conference participant! Ask your friends to do the same steps on their machines and then enjoy your conference call.
