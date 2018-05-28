@@ -189,8 +189,8 @@ while the first one is active. It also handles connected/disconnected/failed cal
 and provides logging.
 
 ## Step 4 - VoxEngine: create cloud JS scenarios
-Web SDK code can't perform call management by itself, without cloud JS scenarios. That is why we
-have to create two scenarios. 
+Web SDK code can't perform call management by itself, without cloud JS scenario. That is why we
+have to create a scenario. 
  
 Create the <b>conf_local</b> scenario with the following blocks of code.
 Firstly load the
@@ -255,7 +255,7 @@ e.call.addEventListener(CallEvents.Disconnected, function (event2) {
 
 ## Step 5 – VoxEngine: set up Voximplant application
 
-To make scenario work,
+To make the scenario work,
 we have to create an application and two rules in it.
 Go to the <a href="https://manage.voximplant.com/#applications">Applications tab</a>, click <b>Create application</b>,
 type the name of a new application (“conference-app”, for example) and then click <b>Create</b>.
