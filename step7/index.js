@@ -50,7 +50,7 @@ let currentCall;
 callForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const formData = new FormData(e.target);
-  currentCall = sdk.call({number: formData.get('number'), video: {sendVideo: true, receiveVideo: true}});
+  currentCall = sdk.callConference({number: formData.get('number'), video: {sendVideo: true, receiveVideo: true}});
   bindCallCallbacks();
 });
 
