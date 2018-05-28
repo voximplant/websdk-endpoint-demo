@@ -129,7 +129,7 @@ let currentCall;
 callForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const formData = new FormData(e.target);
-  currentCall = sdk.call({number: formData.get('number'), video: {sendVideo: true, receiveVideo: true}});
+  currentCall = sdk.callConference({number: formData.get('number'), video: {sendVideo: true, receiveVideo: true}});
   bindCallCallbacks();
 });
 
@@ -191,31 +191,8 @@ and provides logging.
 ## Step 4 - VoxEngine: create cloud JS scenarios
 Web SDK code can't perform call management by itself, without cloud JS scenarios. That is why we
 have to create two scenarios. 
-
-The first scenario will create <b>gateway sessions</b>: handle incoming calls and connect them to the conference.
-Name it <b>conf_call.js</b>.
-The second scenario serves the conference itself, name it <b>conf_local.js</b>.
-
-<img src="https://voximplant.com/assets/images/2018/03/14/gateway-to-conference.png">
-
-Go to the <a href="https://manage.voximplant.com/#scenarios">Scenarios tab</a>
-of the VoxImplant control panel and add the <b>conf_call</b> scenario with the following code.
-Pay attention to the
-<a href="https://voximplant.com/docs/references/appengine/VoxEngine.html#VoxEngine_callConference">callConference</a> call:
-the argument "myconf" will be used further.
-
-```javascript
-VoxEngine.addEventListener(AppEvents.CallAlerting, function(e) {
-  const call = VoxEngine.callConference("myconf",
-    e.callerid,
-    e.displayName,
-    {},
-    e.scheme);
-  VoxEngine.easyProcess(e.call, call);
-});
-```
  
-Then create the <b>conf_local</b> scenario with the following blocks of code.
+Create the <b>conf_local</b> scenario with the following blocks of code.
 Firstly load the
 <a href="https://voximplant.com/docs/references/appengine/Module_Conference.html">conference</a> module
 and define variables for a conference and participants' counter:
@@ -278,7 +255,7 @@ e.call.addEventListener(CallEvents.Disconnected, function (event2) {
 
 ## Step 5 – VoxEngine: set up Voximplant application
 
-To make scenarios work with each other,
+To make scenario work,
 we have to create an application and two rules in it.
 Go to the <a href="https://manage.voximplant.com/#applications">Applications tab</a>, click <b>Create application</b>,
 type the name of a new application (“conference-app”, for example) and then click <b>Create</b>.
@@ -286,11 +263,6 @@ type the name of a new application (“conference-app”, for example) and then 
 <img src="https://voximplant.com/assets/images/2018/03/13/new-app.jpg" align="center"/>
 
 Then add a new rule to your <b>conference-app</b> application; you can name it <b>Incoming call</b>.
-Use the <b>conf_call</b> JS scenario in the rule and leave the default call pattern ( .* ).
-
-<img src="https://voximplant.com/assets/images/2018/03/13/confcallrule.jpg" align="center"/>
-
-It's time to create another rule for this application; you can name it <b>Conference</b>.
 Use the <b>conf_local</b> JS scenario in this rule. Pay attention to the following details:
 
 * The value in the <b>Pattern</b> field should be the same as an argument in the <b>conf_call</b> scenario.
