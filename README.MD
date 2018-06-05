@@ -256,7 +256,7 @@ e.call.addEventListener(CallEvents.Disconnected, function (event2) {
 ## Step 5 – VoxEngine: set up Voximplant application
 
 To make the scenario work,
-we have to create an application and two rules in it.
+we have to create an application and a rule in it.
 Go to the <a href="https://manage.voximplant.com/#applications">Applications tab</a>, click <b>Create application</b>,
 type the name of a new application (“conference-app”, for example) and then click <b>Create</b>.
 
