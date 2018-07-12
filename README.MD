@@ -262,14 +262,8 @@ type the name of a new application (“conference-app”, for example) and then 
 
 <img src="https://voximplant.com/assets/images/2018/03/13/new-app.jpg" align="center"/>
 
-Then add a new rule to your <b>conference-app</b> application; you can name it <b>Incoming call</b>.
-Use the <b>conf_local</b> JS scenario in this rule. Pay attention to the following details:
-
-* The value in the <b>Pattern</b> field should be the same as an argument in the <b>conf_local</b> scenario.
-In our case, it is "myconf". If a pattern isn't the same, the <b>conf_local</b> scenario won't be able
-to connect incoming calls to the conference.  
-
-* Select the <b>Video conference</b> checkbox to allow video streams in conferences.
+Then add a new rule to your <b>conference-app</b> application; you can name it <b>Conference</b>.
+Use the <b>conf_local</b> JS scenario in this rule. Don't forget to select the <b>Video conference</b> checkbox to allow video streams in conferences.
 
 <img src="https://voximplant.com/assets/images/2018/03/13/conf-local-rule.jpg" align="center"/>
 
