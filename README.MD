@@ -260,11 +260,11 @@ e.call.addEventListener(CallEvents.Disconnected, function (event2) {
 Then add a new rule to your <b>confapp</b> application; you can name it <b>Conference</b>.
 Use the <b>conf_local</b> JS scenario in this rule. Don't forget to select the <b>Video conference</b> checkbox to allow video streams in conferences.
 
-<img src="https://voximplant.com/assets/images/2019/03/04/anewrule_1.jpg" align="center"/>
+<img src="https://voximplant.com/assets/images/2019/03/04/anewrule_1.jpg" width="600" height="437" align="center"/>
 
 To use the application, you need to create at least one user. Go to the <b>Users</b> tab inside of the application, create a user named <b>user1</b>, set a password for it; the <b>active</b> checkbox should be selected. Click <b>Save</b>.
 
-<img src="https://voximplant.com/assets/images/2019/03/04/user1.jpg" align="center">
+<img src="https://voximplant.com/assets/images/2019/03/04/user1.jpg" width="500" height="424" align="center">
 
 That's it! We have prepared the Voximplant cloud to serve video conferences.
 
