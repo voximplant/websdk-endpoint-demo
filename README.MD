@@ -188,8 +188,13 @@ Now web client is able to answer first incoming and decline other incoming calls
 while the first one is active. It also handles connected/disconnected/failed call's states
 and provides logging.
 
-## Step 4 - VoxEngine: create cloud JS scenarios
-Web SDK code can't perform call management by itself, without cloud JS scenario. That is why we
+## Step 4 - VoxEngine: set up Voximplant application with JS scenarios
+
+To make things right, we have to create an application and a rule in it. Go to <a href="https://manage.voximplant.com/applications">Applications</a>, click <b>New application</b>, type the name of a new application (“confapp”, for example) and then click <b>Create</b>.
+
+<img src="https://voximplant.com/assets/images/2019/03/04/newapp.jpg" align="center"/>
+
+Remember that the Web SDK code can't perform call management by itself, without cloud JS scenarios. That is why we
 have to create a scenario. 
  
 Create the <b>conf_local</b> scenario with the following blocks of code.
@@ -251,29 +256,19 @@ e.call.addEventListener(CallEvents.Disconnected, function (event2) {
     }
   });
 ```
- 
 
-## Step 5 – VoxEngine: set up Voximplant application
-
-To make the scenario work,
-we have to create an application and a rule in it.
-Go to the <a href="https://manage.voximplant.com/#applications">Applications tab</a>, click <b>Create application</b>,
-type the name of a new application (“conference-app”, for example) and then click <b>Create</b>.
-
-<img src="https://voximplant.com/assets/images/2018/03/13/new-app.jpg" align="center"/>
-
-Then add a new rule to your <b>conference-app</b> application; you can name it <b>Conference</b>.
+Then add a new rule to your <b>confapp</b> application; you can name it <b>Conference</b>.
 Use the <b>conf_local</b> JS scenario in this rule. Don't forget to select the <b>Video conference</b> checkbox to allow video streams in conferences.
 
-<img src="https://voximplant.com/assets/images/2018/03/13/conf-local-rule.jpg" align="center"/>
+<img src="https://voximplant.com/assets/images/2019/03/04/anewrule_1.jpg" align="center"/>
 
-To use the application, you need to create at least one user. Go to the <a href="https://manage.voximplant.com/#users">Users tab</a>, create a user named **user1**, set a password for it and choose the **conference-app** application; the **is active** checkbox should be selected. Click **Save**.
+To use the application, you need to create at least one user. Go to the <b>Users</b> tab inside of the application, create a user named <b>user1</b>, set a password for it; the <b>active</b> checkbox should be selected. Click <b>Save</b>.
 
-<img src="https://voximplant.com/assets/images/2018/04/13/new-user_2.jpg" align="center">
+<img src="https://voximplant.com/assets/images/2019/03/04/user1.jpg" align="center">
 
 That's it! We have prepared the Voximplant cloud to serve video conferences.
 
-## Step 6 – Endpoint introduction
+## Step 5 – Endpoint introduction
 <a href="https://voximplant.com/docs/references/websdk/classes/endpoint.html">Endpoint</a> is
 one of the new concepts in the latest release. It represents any remote media unit
 in a call. Endpoint can be:
@@ -336,7 +331,7 @@ function onEndpointRemoved(e) {
 }
 ```
 
-## Step 7 – Working with MediaRenderer
+## Step 6 – Working with MediaRenderer
 
 It is possible to create container for video rendering
 when web client started to receive remote video stream. Accordingly, we can delete
@@ -383,5 +378,5 @@ const endpointNode = document.getElementById(e.endpoint.id);
 
 1. Clone this repo to your local machine.
 1. Open the <a href="https://github.com/kzahel/web-server-chrome">Web Server for Chrome</a>, click **Choose folder** and specify the **Step 7** folder. Open the suggested **Web Server URL** in your browser.<br/><img src="https://voximplant.com/assets/images/2018/04/13/webchrome.jpg" width="45%"><br/>
-1. Type in the **Full login** in the right column. The Full login consists of a user name (**user1**) + **@** + application name (**conference-app**) + your Voximplant account name + **voximplant.com**. Then type in the password for the **user1** and click **Connect&Login**.<br/><img src="https://voximplant.com/assets/images/2018/04/13/connect-login.jpg"><br/> Allow access to your microphone and camera.
+1. Type in the **Full login** in the right column. The Full login consists of a user name (**user1**) + **@** + application name (**conference-app**) + your Voximplant account name + **voximplant.com**. Then type in the password for the **user1** and click **Connect&Login**.<br/><img src="https://voximplant.com/assets/images/2019/03/04/loginpass.jpg"><br/> Allow access to your microphone and camera.
 1. Then specify **Conference name/number** as **myconf** and click **Call**.<br/><img src="https://voximplant.com/assets/images/2018/05/28/conf-name.png"><br/> Nice, now you are the conference participant! Ask your friends to do the same steps on their machines and then enjoy your conference call.
