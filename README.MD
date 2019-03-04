@@ -192,7 +192,7 @@ and provides logging.
 
 To make things right, we have to create an application and a rule in it. Go to <a href="https://manage.voximplant.com/applications">Applications</a>, click <b>New application</b>, type the name of a new application (“confapp”, for example) and then click <b>Create</b>.
 
-<img src="https://voximplant.com/assets/images/2019/03/04/newapp.jpg" align="center"/>
+<img src="https://voximplant.com/assets/images/2019/03/04/newapp.jpg" width="500" height="408" align="center"/>
 
 Remember that the Web SDK code can't perform call management by itself, without cloud JS scenarios. That is why we
 have to create a scenario. 
