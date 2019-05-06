@@ -235,7 +235,7 @@ VoxEngine.addEventListener(AppEvents.CallAlerting, function (e) {
     mode: "FORWARD",
     direction: "BOTH", scheme: e.scheme
   });
-  Logger.write(`New endpoint was added ID: ${e.endpoint.id()}`);
+  Logger.write(`New endpoint was added ID: ${endpoint.id()}`);
 });
 ```
 
