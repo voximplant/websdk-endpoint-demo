@@ -35,9 +35,9 @@ with your project. After that you'll see the Web Server URL, that's it.
 
 To use Web SDK, you have to:
  * create the
-<a href="https://voximplant.com/docs/references/websdk/globals.html#getinstance">Voximplant class</a> instance;
- * then <a href="https://voximplant.com/docs/references/websdk/classes/client.html#init">initialize it</a>; 
- * and <a href="https://voximplant.com/docs/references/websdk/classes/client.html#connect">connect</a> to the Voximplant cloud.
+<a href="https://voximplant.com/docs/references/websdk/voximplant#getinstance">Voximplant class</a> instance;
+ * then <a href="https://voximplant.com/docs/references/websdk/voximplant/client#init">initialize it</a>; 
+ * and <a href="https://voximplant.com/docs/references/websdk/voximplant/client#connect">connect</a> to the Voximplant cloud.
  
 We are also going to use two JS files: <b>index.js</b> and <b>helper.js</b>.
 The <b>index.js</b> will contain necessary code related to described concepts; the code which
@@ -199,7 +199,7 @@ have to create a scenario.
  
 Create the <b>conf_local</b> scenario with the following blocks of code.
 Firstly load the
-<a href="https://voximplant.com/docs/references/appengine/Module_Conference.html">conference</a> module
+<a href="https://voximplant.com/docs/references/voxengine/conference">conference</a> module
 and define variables for a conference and participants' counter:
 ```javascript
 require("conference");
@@ -269,20 +269,20 @@ To use the application, you need to create at least one user. Go to the <b>Users
 That's it! We have prepared the Voximplant cloud to serve video conferences.
 
 ## Step 5 – Endpoint introduction
-<a href="https://voximplant.com/docs/references/websdk/classes/endpoint.html">Endpoint</a> is
+<a href="https://voximplant.com/docs/references/websdk/voximplant/endpoint">Endpoint</a> is
 one of the new concepts in the latest release. It represents any remote media unit
 in a call. Endpoint can be:
 
-* another <a href="//voximplant.com/docs/references/appengine/Call.html">call</a>
+* another <a href="https://voximplant.com/docs/references/voxengine/call">call</a>
 (e.g. which is joined to the conference)
-* <a href="https://voximplant.com/docs/references/appengine/Module_Player.html">Player</a>
-* <a href="https://voximplant.com/docs/references/appengine/Module_ASR.html">ASR</a>
-* <a href="https://voximplant.com/docs/references/appengine/Module_Recorder.html">Recorder</a>
+* <a href="https://voximplant.com/docs/references/voxengine/player">Player</a>
+* <a href="https://voximplant.com/docs/references/voxengine/asr">ASR</a>
+* <a href="https://voximplant.com/docs/references/voxengine/recorder">Recorder</a>
 
 Each call from Web SDK includes only Endpoints,
 which send audio/video stream to a call. That means there wouldn't be 
-<a href="https://voximplant.com/docs/references/appengine/Module_ASR.html">ASR</a>'s
-and <a href="https://voximplant.com/docs/references/appengine/Module_Recorder.html">Recorder</a>'s Endpoints
+<a href="https://voximplant.com/docs/references/voxengine/asr">ASR</a>'s
+and <a href="https://voximplant.com/docs/references/voxengine/recorder">Recorder</a>'s Endpoints
 in a call from Web SDK. 
 Voxengine conference in the cloud contains Endpoints for <b>all</b> participants:
 
@@ -293,14 +293,14 @@ Call from Web SDK also includes local audio/video and Endpoints with MediaRender
 <img src="https://voximplant.com/assets/images/2018/03/14/websdkendpoint-details-f.png">
 
 There are
-<a href="https://voximplant.com/docs/references/websdk/enums/endpointevents.html">events
+<a href="https://voximplant.com/docs/references/websdk/voximplant/endpointevents">events
 for Endpoints</a>, which allows tracking Endpoints' behavior.
 For example, we can catch the moment when another participant joined the conference
 and create the container for video rendering. Accordingly, we can delete this container
 when the participant left the conference.
 
 Add a handler for the
-<a href="https://voximplant.com/docs/references/websdk/enums/callevents.html#endpointadded">EndpointAdded</a>
+<a href="https://voximplant.com/docs/references/websdk/voximplant/callevents#endpointadded">EndpointAdded</a>
 event to the <b>bindCallCallbacks</b> function:
 ```javascript
 currentCall.on(VoxImplant.CallEvents.EndpointAdded, onEndpointAdded);
@@ -338,10 +338,10 @@ when web client started to receive remote video stream. Accordingly, we can dele
 this container when remote video stream is stopped. 
 
 When remote video is started, we have access to the
-<a href="https://voximplant.com/docs/references/websdk/classes/mediarenderer.html">MediaRenderer</a>
+<a href="https://voximplant.com/docs/references/websdk/voximplant/mediarenderer">MediaRenderer</a>
 instance. Let's use it for extended logging. Add the handlers for the
-<a href="https://voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaadded">RemoteMediaAdded</a> and
-<a href="https://voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaremoved">RemoteMediaRemoved</a>
+<a href="https://voximplant.com/docs/references/websdk/voximplant/endpointevents#remotemediaadded">RemoteMediaAdded</a> and
+<a href="https://voximplant.com/docs/references/websdk/voximplant/endpointevents#remotemediaremoved">RemoteMediaRemoved</a>
 events to the <b>onEndpointAdded</b> function:
 
 ```javascript
@@ -357,10 +357,10 @@ function onRemoteMediaRemoved(e) {
 ```
 
 When you subscribe to the
-<a href="https://voximplant.com/docs/references/websdk/enums/endpointevents.html#remotemediaadded">RemoteMediaAdded</a>
+<a href="https://voximplant.com/docs/references/websdk/voximplant/endpointevents#remotemediaadded">RemoteMediaAdded</a>
 event, Web SDK will no longer render remote audio/video stream automatically,
 so you have to call the
-<a href="https://voximplant.com/docs/references/websdk/classes/mediarenderer.html#render">MediaRenderer.render</a>
+<a href="https://voximplant.com/docs/references/websdk/voximplant/mediarenderer#render">MediaRenderer.render</a>
 method with optional container parameter. To do so, add the following lines to the <b>onRemoteMediaAdded</b>
 function.
  
