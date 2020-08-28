@@ -60,20 +60,6 @@ callDisconnect.addEventListener('submit', function (e) {
   currentCall.hangup();
 });
 
-//Event listener to auto accept incoming call
-sdk.on(VoxImplant.Events.IncomingCall, function (e) {
-  logger.write(`[WebSDk] New incoming call with ID: ${e.call.id()}`);
-  //if call exist already - hangup
-  if(currentCall){
-    logger.write('[WebSDk] You already have active call. Hangup;');
-    e.call.hangup();
-  }else{
-    currentCall = e.call;
-    bindCallCallbacks();
-    currentCall.answer();
-  }
-});
-
 //Bind primary callbacks
 function bindCallCallbacks(e){
   logger.write(`[WebSDk] Setup listeners for ID: ${currentCall.id()}`);
