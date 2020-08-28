@@ -60,20 +60,6 @@ callDisconnect.addEventListener('submit', function (e) {
   currentCall.hangup();
 });
 
-//Event listener to auto accept incoming call
-sdk.on(VoxImplant.Events.IncomingCall, function (e) {
-  logger.write(`[WebSDk] New incoming call with ID: ${e.call.id()}`);
-  //if call exist already - hangup
-  if(currentCall){
-    logger.write('[WebSDk] You already have active call. Hangup;');
-    e.call.hangup();
-  }else{
-    currentCall = e.call;
-    bindCallCallbacks();
-    currentCall.answer();
-  }
-});
-
 //Bind primary callbacks
 function bindCallCallbacks(e){
   logger.write(`[WebSDk] Setup listeners for ID: ${currentCall.id()}`);
@@ -106,11 +92,15 @@ function onCallFailed(e) {
 function onEndpointAdded(e) {
   logger.write(`[WebSDk] New endpoint ID: ${e.endpoint.id} (${e.endpoint.isDefault?'default':'regular'}) for Call ID: ${e.call.id()}`);
   //Create the display element about this endpoint
-  const node = renderTemplate(e.endpoint);
-  const container = document.getElementById('js__workbench');
-  container.appendChild(node);
+  if(!e.endpoint.isDefault) {
+    const node = renderTemplate(e.endpoint);
+    const container = document.getElementById('js__workbench');
+    container.appendChild(node);
+  }
   //Remove the display element with this endpoint
-  e.endpoint.on(VoxImplant.EndpointEvents.EndPointRemoved,onEndpointRemoved)
+  e.endpoint.on(VoxImplant.EndpointEvents.Removed, onEndpointRemoved);
+  e.endpoint.on(VoxImplant.EndpointEvents.RemoteMediaAdded, onRemoteMediaAdded);
+  e.endpoint.on(VoxImplant.EndpointEvents.RemoteMediaRemoved, onRemoteMediaRemoved);
 }
 
 function onEndpointRemoved(e) {
@@ -120,4 +110,20 @@ function onEndpointRemoved(e) {
   if(node) {
     container.removeChild(node);
   }
+}
+
+function onRemoteMediaAdded(e) {
+  logger.write(`[WebSDk] New MediaRenderer ID: ${e.mediaRenderer.id} in ${e.endpoint.id} for Call ID: ${e.call.id()}`);
+  const endpointNode = document.getElementById(e.endpoint.id);
+  if(endpointNode){
+    const container = endpointNode.querySelector('.endpoint__media');
+    e.mediaRenderer.element.width="200";
+    e.mediaRenderer.element.height="150";
+    e.mediaRenderer.render(container);
+
+  }
+}
+
+function onRemoteMediaRemoved(e) {
+  logger.write(`[WebSDk] MediaRenderer was removed ID: ${e.mediaRenderer.id} in ${e.endpoint.id} for Call ID: ${e.call.id()}`);
 }

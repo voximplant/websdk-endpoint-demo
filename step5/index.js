@@ -60,26 +60,13 @@ callDisconnect.addEventListener('submit', function (e) {
   currentCall.hangup();
 });
 
-//Event listener to auto accept incoming call
-sdk.on(VoxImplant.Events.IncomingCall, function (e) {
-  logger.write(`[WebSDk] New incoming call with ID: ${e.call.id()}`);
-  //if call exist already - hangup
-  if(currentCall){
-    logger.write('[WebSDk] You already have active call. Hangup;');
-    e.call.hangup();
-  }else{
-    currentCall = e.call;
-    bindCallCallbacks();
-    currentCall.answer();
-  }
-});
-
 //Bind primary callbacks
 function bindCallCallbacks(e){
   logger.write(`[WebSDk] Setup listeners for ID: ${currentCall.id()}`);
-  currentCall.on(VoxImplant.CallEvents.Connected,onCallConnected);
-  currentCall.on(VoxImplant.CallEvents.Disconnected,onCallDisconnected);
-  currentCall.on(VoxImplant.CallEvents.Failed,onCallFailed);
+  currentCall.on(VoxImplant.CallEvents.Connected, onCallConnected);
+  currentCall.on(VoxImplant.CallEvents.Disconnected, onCallDisconnected);
+  currentCall.on(VoxImplant.CallEvents.Failed, onCallFailed);
+  currentCall.on(VoxImplant.CallEvents.EndpointAdded, onEndpointAdded);
   callForm.style.display = 'none';
   callDisconnect.style.display = 'block';
 }
@@ -100,4 +87,25 @@ function onCallFailed(e) {
   currentCall = null;
   callForm.style.display = 'block';
   callDisconnect.style.display = 'none';
+}
+
+function onEndpointAdded(e) {
+  logger.write(`[WebSDk] New endpoint ID: ${e.endpoint.id} (${e.endpoint.isDefault?'default':'regular'}) for Call ID: ${e.call.id()}`);
+  //Create the display element about this endpoint
+  if(!e.endpoint.isDefault) {
+    const node = renderTemplate(e.endpoint);
+    const container = document.getElementById('js__workbench');
+    container.appendChild(node);
+  }
+  //Remove the display element with this endpoint
+  e.endpoint.on(VoxImplant.EndpointEvents.EndPointRemoved,onEndpointRemoved);
+}
+
+function onEndpointRemoved(e) {
+  logger.write(`[WebSDk] Endpoint was removed ID: ${e.endpoint.id} (${e.endpoint.isDefault?'default':'regular'}) for Call ID: ${e.call.id()}`);
+  const container = document.getElementById('js__workbench');
+  const node = document.getElementById(e.endpoint.id);
+  if(node) {
+    container.removeChild(node);
+  }
 }

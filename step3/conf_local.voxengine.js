@@ -25,7 +25,7 @@ VoxEngine.addEventListener(AppEvents.CallAlerting, function (event) {
   event.call.addEventListener(CallEvents.Disconnected, function (event2) {
     partsCounter = partsCounter - 1;
     if (partsCounter === 0) {
-      setTimeout(checkForTermination, 1000 * 10); // wait for 10 ceconds
+      setTimeout(checkForTermination, 1000 * 10); // wait for 10 seconds
     }
   });
   event.call.answer();
